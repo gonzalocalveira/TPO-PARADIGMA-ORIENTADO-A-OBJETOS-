@@ -15,9 +15,9 @@ public abstract class Persona {
         this.edad=edad;
         this.correoElectronico=correoElectronico;
         this.contrasenia=contrasenia;
-
-
     }
+
+    //getters y setters
 
     public String getNombre(){
         return nombre;
@@ -51,6 +51,7 @@ public abstract class Persona {
 
     public void setContrasenia(String nuevaContrasenia){
         this.contrasenia=nuevaContrasenia;
+
     }
 
     public abstract boolean validarUsuario(String correoElectronico, String contrasenia);

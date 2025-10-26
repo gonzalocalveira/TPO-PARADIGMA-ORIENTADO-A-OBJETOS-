@@ -1,11 +1,15 @@
 package modelo;
 
 
+
+
 import java.io.*;
 import java.util.*;
 public class ManejoDeArchivos{
 
+
    
+
 
     public ManejoDeArchivos(){
         
@@ -19,7 +23,10 @@ public class ManejoDeArchivos{
 
             linea=entrada.readLine();//leer el archivo
             while (linea!=null){
+
                 if(linea.contains(datoBuscado)){
+
+        
                     return true;
                 }
 
@@ -40,6 +47,7 @@ public class ManejoDeArchivos{
 
     public <T> boolean escribir( String nombreArchivo,  T objeto, boolean append){
         try{
+
             BufferedWriter salida= new BufferedWriter(
                 new FileWriter(nombreArchivo, append));
             salida.write(objeto.toString());
@@ -48,14 +56,8 @@ public class ManejoDeArchivos{
             return true;
         }
         catch (Exception e){
+
             return false;
         }
     }
-    
-
-
-    
-
-
-
 }

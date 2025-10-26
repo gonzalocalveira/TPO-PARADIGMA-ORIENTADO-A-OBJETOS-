@@ -2,9 +2,8 @@ package modelo;
 
 import java.util.Date;
 
-
 public class Gaseosa extends Producto {
-
+    //atributos
     private String marca;
     private double litros;
 
@@ -13,7 +12,6 @@ public class Gaseosa extends Producto {
         super(nombreProducto,precioProducto,
         fechaVencimiento,stock,marcaProducto);
         this.litros = litros;
-        
     }
 
     //getters y setters
