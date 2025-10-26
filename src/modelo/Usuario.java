@@ -1,35 +1,59 @@
 package modelo;
 
-public class Usuario {
+public abstract class Usuario {
 
     private String nombre;
-    private String clave;
+    private int edad;
 
-    public Usuario(String nombre, String clave){
-        this.clave=clave;
+    private String correoElectronico;
+
+    private String contrasenia;
+
+    public Usuario(String nombre, int edad, String correoElectronico, 
+    String contrasenia){
         this.nombre=nombre;
+        this.edad=edad;
+        this.correoElectronico=correoElectronico;
+        this.contrasenia=contrasenia;
     }
 
-    public boolean validarUsuario(String nombre, String clave){
-        if(this.clave.equals(clave)&& this.nombre.equals(nombre)){
-            return true;
-        }
-        return false;
-    }
+    //getters y setters
 
-    public String getNombre() {
+    public String getNombre(){
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nuevoNombre){
+        this.nombre=nuevoNombre;
+        
+    }
+    
+    public int getEdad(){
+        return edad;
     }
 
-    public String getClave() {
-        return clave;
+    public void setEdad(int nuevaEdad){
+        this.edad=nuevaEdad;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public String getCorreoElectronico(){
+        return correoElectronico;
     }
+
+    public void setCorreoElectronico(String nuevoCorreoElectronico){
+        this.correoElectronico=nuevoCorreoElectronico;
+
+    }
+
+    public String getContrasenia(){
+        return contrasenia;
+    }
+
+    public void setContrasenia(String nuevaContrasenia){
+        this.contrasenia=nuevaContrasenia;
+
+    }
+
+    
+    
 }

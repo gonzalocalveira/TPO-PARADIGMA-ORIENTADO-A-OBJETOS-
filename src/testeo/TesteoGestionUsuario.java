@@ -1,6 +1,6 @@
 package testeo;
 import modelo.*;
-public class TestGestionUsuario {
+public class TesteoGestionUsuario {
     public static void main (String args[]){
 
         GestionUsuario gestionUsuario= new GestionUsuario();

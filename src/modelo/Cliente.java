@@ -1,6 +1,6 @@
 package modelo;
 
-public class Cliente extends Persona{
+public class Cliente extends Usuario{
     
     
     public  Cliente(String nombre, int edad, String correoElectronico, 
@@ -9,14 +9,6 @@ public class Cliente extends Persona{
 
     }
 
-    @Override
-    public boolean validarUsuario(String correoElectronico, 
-        String contrasenia){
-        if(getContrasenia().equals(contrasenia)&& getCorreoElectronico().equals(correoElectronico)){
-            return true;
-        }
-        return false;
-    }
 
     public String toString(){
         return "Nombre: " + getNombre() + " Edad: " + getEdad() + 

@@ -23,7 +23,7 @@ public class testeoFactura {
 
         MediosDePago trans = new Transferencia("1122334455");
 
-        Factura factura = new Factura(1, carrito, trans);
+        Factura factura = new Factura("1", carrito, trans);
 
         if (factura.procesarPago()) {
             factura.mostrarFactura();

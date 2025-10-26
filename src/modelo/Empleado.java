@@ -1,6 +1,6 @@
 package modelo;
 
-public class Empleado extends Persona{
+public class Empleado extends Usuario{
     
     
     public  Empleado(String nombre, int edad, String correoElectronico, 
@@ -9,13 +9,10 @@ public class Empleado extends Persona{
 
     }
 
-    @Override
-    public boolean validarUsuario(String correoElectronico, 
-        String contrasenia){
-        if(getContrasenia().equals(contrasenia)&& getCorreoElectronico().equals(correoElectronico)){
-            return true;
-        }
-        return false;
+    public String toString(){
+        return "Nombre: " + getNombre() + " Edad: " + getEdad() + 
+        " Correo Electronico: " + getCorreoElectronico() +
+        " Contrasenia: " + getContrasenia();
     }
     
 }

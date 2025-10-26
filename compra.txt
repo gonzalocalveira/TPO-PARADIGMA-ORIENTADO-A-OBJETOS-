@@ -1,0 +1,1 @@
+Factura nro: 80, Fecha: 2025-10-26T17:38:16.620, Cliente: Gonzalo, Productos: {Gaseosa: gaseosa Marca: Coca-Cola Litros: 1.5 Precio: 150.0 Stock: 50 Vence: Wed Dec 31 00:00:00 ART 2025=1}, Total: 150.0, Medio de pago: Transferencia

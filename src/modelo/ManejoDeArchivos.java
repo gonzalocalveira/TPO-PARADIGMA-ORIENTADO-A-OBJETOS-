@@ -60,4 +60,32 @@ public class ManejoDeArchivos{
             return false;
         }
     }
+
+    public String buscarFacturaCliente(String nombreArchivo, String correoCliente){
+        String linea;
+        try{
+            //se crea un objeto para leer el archivo
+            BufferedReader entrada = new BufferedReader(new FileReader(nombreArchivo));
+
+            linea=entrada.readLine();//leer el archivo
+            while (linea!=null){
+
+                if(linea.contains(correoCliente)){
+                    return linea;
+
+        
+                    
+                }
+
+            linea=entrada.readLine();
+            }
+
+            entrada.close();
+            return null;
+
+
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

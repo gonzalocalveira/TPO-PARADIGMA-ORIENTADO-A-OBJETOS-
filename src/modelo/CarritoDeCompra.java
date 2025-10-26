@@ -19,8 +19,8 @@ public class CarritoDeCompra {
     //getters, setters y metodos
 
 
-    public int getPrecioTotal(){
-       int total = 0;
+    public double getPrecioTotal(){
+       double total = 0;
        for (Map.Entry<Producto, Integer> p: productos.entrySet()){
               total+=p.getKey().getPrecioProducto()*p.getValue();
        }

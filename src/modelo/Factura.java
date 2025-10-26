@@ -7,26 +7,26 @@ import java.time.LocalDateTime;
 
 public class Factura {
     //atributos
-    private int nroFactura;
+    private String nroFactura;
     private LocalDateTime fecha;
-    private List<Producto> productos;
+
     private MediosDePago mediosDePago;
     private double total;
     private CarritoDeCompra carritoDeCompra;
     private boolean pagoProcesado;
 
     //constructor
-    public Factura (int nroFactura, CarritoDeCompra carritoDeCompra, MediosDePago mediosDePago){
+    public Factura (String nroFactura, CarritoDeCompra carritoDeCompra, MediosDePago mediosDePago){
         this.nroFactura = nroFactura;
         this.carritoDeCompra = carritoDeCompra;
         this.fecha = LocalDateTime.now();
-        this.productos = new ArrayList<>(carritoDeCompra.getProductos().keySet());
+
         this.mediosDePago = mediosDePago;
         this.pagoProcesado = false;
-        this.total = calcularTotal();
+        this.total = carritoDeCompra.getPrecioTotal();
     }
     //getters, setters y metodos
-    public int getNroFactura(){
+    public String getNroFactura(){
         return nroFactura;
     }
 
@@ -34,8 +34,12 @@ public class Factura {
         return fecha;
     }
 
-    public List<Producto> getProductos(){
-        return productos;
+    public double calcularTotal(){
+        return total=carritoDeCompra.getPrecioTotal();
+    }
+
+    public CarritoDeCompra getCarritoDeCompras(){
+        return carritoDeCompra;
     }
 
     public MediosDePago getMediosDePago(){
@@ -46,7 +50,7 @@ public class Factura {
         return total;
     }
 
-    public void setNroFactura(int nuevoNroFactura){
+    public void setNroFactura(String nuevoNroFactura){
         this.nroFactura = nuevoNroFactura;
     }
 
@@ -54,12 +58,7 @@ public class Factura {
         this.fecha = nuevaFecha;
     }
 
-    private double calcularTotal(){
-        double suma = 0;
-        for (Producto p : productos) {
-            suma += p.getPrecioProducto();
-        } return suma;
-    }
+    
 
     public boolean procesarPago() {
     if (carritoDeCompra.getPrecioTotal() <= 0) {
@@ -102,4 +101,11 @@ public class Factura {
         System.out.println("===============================================================");
     } 
 
+    public String toString(){
+        return "Factura nro: " + nroFactura + 
+        ", Fecha: " + fecha + 
+        ", Cliente: " + carritoDeCompra.getCliente().getNombre() +
+        ", Productos: "+carritoDeCompra.getProductos()+", Total: " + total +
+        ", Medio de pago: " + mediosDePago.getTipoPago();
+    }
 }
