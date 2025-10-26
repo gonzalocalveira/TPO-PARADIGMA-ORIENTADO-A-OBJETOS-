@@ -2,78 +2,68 @@ package modelo;
 import java.io.*;
 import java.nio.Buffer;
 import java.util.*;
+import modelo.*;
 public class GestionUsuario {
 
-    //List<Usuario> usuarioList;
-
-    private String nombreArchivo;
-    private String rutaArchivo;
+    private List<Persona> usuarios;
+    private final String ARCHIVOS_USUARIOS="usuario.txt";
+    private ManejoDeArchivos manejoDeArchivos;
 
     public GestionUsuario(){
-        nombreArchivo="usuario.txt";
-        rutaArchivo="src/datos/";
+        manejoDeArchivos= new ManejoDeArchivos();
+        usuarios= new ArrayList<Persona>();
     }
 
-    public boolean buscarUsuario(Usuario u){
+    public boolean buscarUsuarioPorMail(String mail){
+       return manejoDeArchivos.leer(ARCHIVOS_USUARIOS, mail);
+    }
+
+    public boolean buscarUsuarioPorContrasenia(String contrasenia){
+        return manejoDeArchivos.leer(ARCHIVOS_USUARIOS, contrasenia);
 
 
-        String credencialesABuscar= u.getNombre()+","+u.getClave();
-        String linea;
-        try{
-            //se crea un objeto para leer el archivo
-            BufferedReader entrada = new BufferedReader(new FileReader(rutaArchivo+nombreArchivo));
+    }
 
-            linea=entrada.readLine();//leer el archivo
-            while (linea!=null){
-                if(linea.equals(credencialesABuscar)){
-                    return true;
-                }
-
-            linea=entrada.readLine();
+    public boolean registrarUsuario(Persona usuario){
+        if(!buscarUsuarioPorMail(usuario.getCorreoElectronico())){
+            if(validarCorreo(usuario) && validarContrasenia(usuario)){
+              
+                
+                return manejoDeArchivos.escribir(ARCHIVOS_USUARIOS,usuario, true);
             }
-
-            entrada.close();
             return false;
+           
+                
+         
+        }
+        else{
+            return  false;
+        }
+    
+    }
 
-
-        }catch (Exception e){
-            return false;
+    public boolean iniciarSesion(Persona usuario){
+          //busco el usuario por correo y contrasnia 
+        if(buscarUsuarioPorMail(usuario.getCorreoElectronico()) && 
+        buscarUsuarioPorContrasenia(usuario.getContrasenia())){
+            return true;
 
         }
-    }
+        return false;
 
-    public boolean guardarEnArchivo(Usuario usuario){
-        File archivo = new File(rutaArchivo + nombreArchivo);
 
-        try{
 
-            BufferedWriter escribir = new BufferedWriter(new FileWriter(archivo,true));
-            if(!buscarUsuario(usuario)){
-                if(validarCorreo(usuario)&& validarCorreo(usuario)) {
-
-                    escribir.newLine();
-                    escribir.write(usuario.getNombre() + ',' + usuario.getClave());
-
-                    escribir.close();
-
-                    return true;
-                }
-            }
-            escribir.close();
-            return false;
-        } catch (Exception e){
-            return false;
-        }
 
     }
 
-    public boolean validarCorreo(Usuario usuario){
+    
+    public boolean validarCorreo(Persona usuario){
         //ejemplo: gcalveira@uade.edu.ar
 
-        String[] coincidencias = {"gmail", "hotmail", "uade", ".com", ".ar"};
+        String[] coincidencias = {"gmail", "hotmail", "uade", "com", "ar"};
 
         // Verifica que tenga exactamente un '@'
-        String[] partesCorreo = usuario.getNombre().split("@");
+        String[] partesCorreo = usuario.getCorreoElectronico().split("@");
         if (partesCorreo.length != 2) {
             return false;
         }
@@ -95,11 +85,15 @@ public class GestionUsuario {
 
     }
 
-    public boolean validarContrasenia(Usuario usuario){
-        if(usuario.getClave().length()<8){
-            return false;
+    public boolean validarContrasenia(Persona usuario){
+        if(usuario.getContrasenia().length()<8){
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public void agregarUsuarioALaLista(Persona usuario){
+        usuarios.add(usuario);
     }
 
 

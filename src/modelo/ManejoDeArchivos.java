@@ -1,30 +1,25 @@
 package modelo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.FileReader;
 
+import java.io.*;
+import java.util.*;
 public class ManejoDeArchivos{
 
-    private Usuario usuario;
-    private String nombreArchivo;
-    private String rutaArchivo;
+   
 
     public ManejoDeArchivos(){
         
     }
-
-    public boolean leer(){
+    
+    public boolean leer(String nombreArchivo, String datoBuscado){
         String linea;
         try{
             //se crea un objeto para leer el archivo
-            BufferedReader entrada = new BufferedReader(new FileReader(rutaArchivo+nombreArchivo));
+            BufferedReader entrada = new BufferedReader(new FileReader(nombreArchivo));
 
             linea=entrada.readLine();//leer el archivo
             while (linea!=null){
-                if(linea.equals(){
+                if(linea.contains(datoBuscado)){
                     return true;
                 }
 
@@ -38,29 +33,21 @@ public class ManejoDeArchivos{
         }catch (Exception e){
             return false;
             }
-     }
+    }
+    
 
-    public boolean escribir(){
-        
-         File archivo = new File(rutaArchivo + nombreArchivo);
 
+
+    public <T> boolean escribir( String nombreArchivo,  T objeto, boolean append){
         try{
-
-            BufferedWriter escribir = new BufferedWriter(new FileWriter(archivo,true));
-            if(!buscarUsuario(usuario)){
-                if(validarCorreo(usuario)&& validarCorreo(usuario)) {
-
-                    escribir.newLine();
-                    escribir.write(usuario.getNombre() + ',' + usuario.getClave());
-
-                    escribir.close();
-
-                    return true;
-                }
-            }
-            escribir.close();
-            return false;
-        } catch (Exception e){
+            BufferedWriter salida= new BufferedWriter(
+                new FileWriter(nombreArchivo, append));
+            salida.write(objeto.toString());
+            salida.newLine();
+            salida.close();
+            return true;
+        }
+        catch (Exception e){
             return false;
         }
     }

@@ -50,7 +50,7 @@ public abstract class Persona {
     }
 
     public void setContrasenia(String nuevaContrasenia){
-        this.contrasenia=contrasenia;
+        this.contrasenia=nuevaContrasenia;
     }
 
     public abstract boolean validarUsuario(String correoElectronico, String contrasenia);
