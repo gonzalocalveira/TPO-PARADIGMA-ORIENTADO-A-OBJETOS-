@@ -1,7 +1,7 @@
 package testeo;
 import modelo.Cliente;
 
-public class TesteCliente {
+public class TesteoCliente {
 
 
     static public void main (String args[]){

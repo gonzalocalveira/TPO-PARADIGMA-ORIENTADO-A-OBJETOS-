@@ -3,11 +3,12 @@ package modelo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ManejoDeArchivos{
-
     private Usuario usuario;
     private String nombreArchivo;
     private String rutaArchivo;
@@ -24,7 +25,7 @@ public class ManejoDeArchivos{
 
             linea=entrada.readLine();//leer el archivo
             while (linea!=null){
-                if(linea.equals(){
+                if(linea.equals(usuario.getNombre() + "," + usuario.getClave())){ //el usuario ya esta en el txt
                     return true;
                 }
 
@@ -48,7 +49,7 @@ public class ManejoDeArchivos{
 
             BufferedWriter escribir = new BufferedWriter(new FileWriter(archivo,true));
             if(!buscarUsuario(usuario)){
-                if(validarCorreo(usuario)&& validarCorreo(usuario)) {
+                if(validarCorreo(usuario)&& validarCorreo(usuario)) { //agregar las validaciones
 
                     escribir.newLine();
                     escribir.write(usuario.getNombre() + ',' + usuario.getClave());
@@ -64,11 +65,4 @@ public class ManejoDeArchivos{
             return false;
         }
     }
-    
-
-
-    
-
-
-
 }

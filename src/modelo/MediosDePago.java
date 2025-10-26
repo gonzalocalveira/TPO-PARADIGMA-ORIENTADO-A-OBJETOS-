@@ -4,10 +4,11 @@ public abstract class MediosDePago {
 
     private String tipoPago;
 
-    public MediosDePago(){
+    public MediosDePago(String tipoPago){
         this.tipoPago=tipoPago;
     }
 
+    //getters y setters
 
     public String getTipoPago(){
         return tipoPago;
@@ -17,7 +18,7 @@ public abstract class MediosDePago {
         this.tipoPago=nuevoTipoPago;
     }
 
-    public abstract boolean procresarPago();
+    public abstract boolean procesarPago(double total);
 
 
     

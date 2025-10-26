@@ -4,8 +4,8 @@ import java.util.*;
 
 
 public class CarritoDeCompra {
+
     private Producto producto;
-   
     private List<MediosDePago> mediosDePago;
     private HashMap<Producto, Integer> productos;
     private Cliente cliente;
@@ -13,7 +13,6 @@ public class CarritoDeCompra {
     public CarritoDeCompra  (Cliente cliente){
         this.mediosDePago = new ArrayList<MediosDePago>();
         this.productos = new HashMap<Producto, Integer>();
-    
         this.cliente = cliente;
     }
 
@@ -26,6 +25,10 @@ public class CarritoDeCompra {
               total+=p.getKey().getPrecioProducto()*p.getValue();
        }
        return total;
+    }
+
+    public Cliente getCliente(){
+        return cliente;
     }
 
     public int validarTipoPago(){

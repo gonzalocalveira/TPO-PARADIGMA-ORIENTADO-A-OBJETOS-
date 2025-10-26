@@ -39,7 +39,7 @@ public class Carne {
     }
 
     public void setFechaVencimiento(Date nuevaFechaVencimiento){
-        this.fechaVencimiento = fechaVencimiento;
+        this.fechaVencimiento = nuevaFechaVencimiento;
     }
     
 }
