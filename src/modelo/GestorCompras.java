@@ -40,16 +40,19 @@ public class GestorCompras implements IGestorCompras {
     @Override
     public boolean actualizarStockProducto(){
 
-        HashMap<Producto, Integer> productosDeCarritoCompra= carritoDeCompra.getProductos();
-        for(IFactura f: facturas){
-            for(Map.Entry<Producto,Integer> p: productosDeCarritoCompra.entrySet()){
-                
-                return gestorProductos.actualizarStockProducto(p.getKey(), p.getValue());
+         for (IFactura f : facturas) {
+
+        ICarritoDeCompra carrito = f.getCarritoDeCompras();
+        HashMap<Producto, Integer> productosDelCarrito = carrito.getProductos();
+
+        for (Map.Entry<Producto, Integer> entry : productosDelCarrito.entrySet()) {
+            Producto producto = entry.getKey();
+            int cantidad = entry.getValue();
+
+            gestorProductos.actualizarStockProducto(producto, cantidad);
             }
-           
         }
-        return false;
-        
+        return true;
     }
 
     
