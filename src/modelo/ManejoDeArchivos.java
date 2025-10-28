@@ -9,11 +9,12 @@ import java.util.*;
 import modelo.Interface.IManejoDeArchivos;
 public class ManejoDeArchivos implements IManejoDeArchivos{
 
-
+    private final String RUTA = "src/modelo/datos/";
    
 
 
     public ManejoDeArchivos(){
+        
         
     }
 
@@ -22,7 +23,7 @@ public class ManejoDeArchivos implements IManejoDeArchivos{
         String linea;
         try{
             //se crea un objeto para leer el archivo
-            BufferedReader entrada = new BufferedReader(new FileReader(nombreArchivo));
+            BufferedReader entrada = new BufferedReader(new FileReader( nombreArchivo));
 
             linea=entrada.readLine();//leer el archivo
             while (linea!=null){
@@ -68,7 +69,7 @@ public class ManejoDeArchivos implements IManejoDeArchivos{
         String linea;
         try{
             //se crea un objeto para leer el archivo
-            BufferedReader entrada = new BufferedReader(new FileReader(nombreArchivo));
+            BufferedReader entrada = new BufferedReader(new FileReader( nombreArchivo));
 
             linea=entrada.readLine();//leer el archivo
             while (linea!=null){
