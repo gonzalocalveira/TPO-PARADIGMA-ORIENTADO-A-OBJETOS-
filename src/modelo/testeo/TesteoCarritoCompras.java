@@ -1,8 +1,10 @@
-package testeo;
+package modelo.testeo;
 
 import modelo.*;
 
 import java.util.Date;
+import modelo.Interface.*;
+
 public class TesteoCarritoCompras {
         static public void main (String args[]){
             Cliente cliente1 = new Cliente ("Gonzalo",
@@ -20,7 +22,8 @@ public class TesteoCarritoCompras {
              Gaseosa gaseosa3= new Gaseosa("gaseosa", 
             150.0, new Date(125, 11, 31), 50,
              1.5, "Coca-Cola");
-            CarritoDeCompra carrito= new CarritoDeCompra(cliente1);
+            
+            ICarritoDeCompra carrito= new CarritoDeCompra(cliente1);
             carrito.agregarProducto(gaseosa1, 1);
             carrito.agregarProducto(gaseosa2, 2);
             carrito.agregarProducto(gaseosa3, 3);

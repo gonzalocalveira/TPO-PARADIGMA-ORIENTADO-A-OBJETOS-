@@ -1,24 +1,29 @@
 package modelo;
 
 import java.util.*;
-public class GestorCompras {
-    private List<Factura> facturas;
 
-    private ManejoDeArchivos manejoDeArchivos;
+
+import modelo.Interface.*;
+public class GestorCompras implements IGestorCompras {
+    private List<IFactura> facturas;
+
+    private IManejoDeArchivos manejoDeArchivos;
     private final String ARCHIVO_COMPRA="compra.txt";
-    private GestorProductos gestorProductos;
+    private IGestorProductos gestorProductos;
 
     private CarritoDeCompra carritoDeCompra;
 
+    
     public GestorCompras(){
-        facturas= new ArrayList<Factura>();
+        facturas= new ArrayList<IFactura>();
         manejoDeArchivos= new ManejoDeArchivos();
         gestorProductos= new GestorProductos();
 
     }
-
+    
+    @Override
     public boolean guardarCompras(){
-        for(Factura f: facturas){
+        for(IFactura f: facturas){
             if(!manejoDeArchivos.leer(ARCHIVO_COMPRA, f.getNroFactura())){
                 return manejoDeArchivos.escribir(ARCHIVO_COMPRA, f, true);
              }
@@ -27,14 +32,16 @@ public class GestorCompras {
         return false;
     }
 
-    public void agregarFactura(Factura factura){
+    @Override
+    public void agregarFactura(IFactura factura){
         facturas.add(factura);
     }
 
+    @Override
     public boolean actualizarStockProducto(){
 
         HashMap<Producto, Integer> productosDeCarritoCompra= carritoDeCompra.getProductos();
-        for(Factura f: facturas){
+        for(IFactura f: facturas){
             for(Map.Entry<Producto,Integer> p: productosDeCarritoCompra.entrySet()){
                 
                 return gestorProductos.actualizarStockProducto(p.getKey(), p.getValue());
@@ -45,7 +52,8 @@ public class GestorCompras {
         
     }
 
-     
+    
+    @Override
     public String consultarCompraPorCliente(Usuario u){
 
        return manejoDeArchivos.buscarFacturaCliente(ARCHIVO_COMPRA, u.getNombre());

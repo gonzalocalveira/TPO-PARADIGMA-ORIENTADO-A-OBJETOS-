@@ -1,4 +1,4 @@
-package testeo;
+package modelo.testeo;
 import modelo.Cliente;
 
 public class TesteoCliente {

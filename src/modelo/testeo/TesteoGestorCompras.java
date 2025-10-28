@@ -1,14 +1,14 @@
-package testeo;
+package modelo.testeo;
 
 import java.util.Date;
 
 import modelo.*;
-
+import modelo.Interface.*;
 public class TesteoGestorCompras {
     public static void main(String[] args) {
 
 
-        GestorCompras gestorCompras= new GestorCompras();
+        IGestorCompras gestorCompras= new GestorCompras();
 
         Cliente cliente = new Cliente ("Gonzalo", 25,"gcalveira@uade.edu.ar","12345");
 
@@ -16,7 +16,7 @@ public class TesteoGestorCompras {
         150.0, new Date(125, 11, 31), 50,
         1.5, "Coca-Cola");
 
-        CarritoDeCompra carrito = new CarritoDeCompra(cliente);
+        ICarritoDeCompra carrito = new CarritoDeCompra(cliente);
 
         carrito.agregarProducto(coca, 1);
 
@@ -24,7 +24,7 @@ public class TesteoGestorCompras {
 
         MediosDePago trans = new Transferencia("1122334455");
 
-        Factura factura = new Factura("80", carrito, trans);
+        IFactura factura = new Factura("80", carrito, trans);
         gestorCompras.agregarFactura(factura);
 
         if(gestorCompras.guardarCompras()){

@@ -1,9 +1,9 @@
 package modelo;
 
 import java.util.*;
+import modelo.Interface.ICarritoDeCompra;
 
-
-public class CarritoDeCompra {
+public class CarritoDeCompra implements ICarritoDeCompra {
 
     private Producto producto;
     private List<MediosDePago> mediosDePago;
@@ -19,6 +19,7 @@ public class CarritoDeCompra {
     //getters, setters y metodos
 
 
+    @Override
     public double getPrecioTotal(){
        double total = 0;
        for (Map.Entry<Producto, Integer> p: productos.entrySet()){
@@ -27,14 +28,17 @@ public class CarritoDeCompra {
        return total;
     }
 
+    @Override
     public Cliente getCliente(){
         return cliente;
     }
 
+    @Override
     public int validarTipoPago(){
         return 0;
     }
 
+    @Override
     public void agregarProducto(Producto producto, int cantidad){
         if (productos.containsKey(producto)){
             int cantidadActual= productos.get(producto);
@@ -44,6 +48,7 @@ public class CarritoDeCompra {
         }
     }
 
+    @Override
     public void eliminarProducto(Producto producto, int cantidad){
         if(productos.containsKey(producto)){
             int cantidadActual= productos.get(producto);
@@ -56,6 +61,7 @@ public class CarritoDeCompra {
             
         }
     }
+    @Override
     public HashMap<Producto, Integer> getProductos(){
         return productos;
     }

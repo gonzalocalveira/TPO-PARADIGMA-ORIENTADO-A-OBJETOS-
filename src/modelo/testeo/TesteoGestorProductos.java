@@ -1,11 +1,12 @@
-package testeo;
+package modelo.testeo;
 
 import java.util.Date;
 
 import modelo.*;
+import modelo.Interface.IGestorProductos;
 public class TesteoGestorProductos {
     public static void main (String args[]){
-        GestorProductos gestor= new GestorProductos();
+        IGestorProductos gestor= new GestorProductos();
         Queso queso1= new Queso("queso", 500.0,
          new Date(125, 10, 15),10,
             "La Paulina","Pategras");

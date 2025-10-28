@@ -1,9 +1,14 @@
-package testeo;
-import modelo.*;
-public class TesteoGestionUsuario {
+package modelo.testeo;
+import modelo.Interface.IGestorUsuario;
+import modelo.GestorUsuario;
+import modelo.Interface.ISistemaAlmacen;
+import modelo.SistemaAlmacen;
+import modelo.Cliente;
+public class TesteoGestorUsuario {
     public static void main (String args[]){
 
-        GestionUsuario gestionUsuario= new GestionUsuario();
+
+        IGestorUsuario gestionUsuario= new GestorUsuario();
         Cliente cliente1 = new Cliente ("Gonzalo",
              25,"gcalveira@uade.edu.ar",
              "12345");

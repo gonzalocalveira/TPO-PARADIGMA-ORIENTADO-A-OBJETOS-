@@ -1,10 +1,11 @@
-package testeo;
+package modelo.testeo;
 
 import java.util.Date;
 
 import modelo.*;
+import modelo.Interface.*;
 
-public class testeoFactura {
+public class TesteoFactura {
 
     public static void main(String[] args) {
         Cliente cliente = new Cliente ("Gonzalo",
@@ -15,7 +16,7 @@ public class testeoFactura {
         150.0, new Date(125, 11, 31), 50,
         1.5, "Coca-Cola");
 
-        CarritoDeCompra carrito = new CarritoDeCompra(cliente);
+        ICarritoDeCompra carrito = new CarritoDeCompra(cliente);
 
         carrito.agregarProducto(coca, 1);
 
@@ -23,13 +24,13 @@ public class testeoFactura {
 
         MediosDePago trans = new Transferencia("1122334455");
 
-        Factura factura = new Factura("1", carrito, trans);
+        IFactura factura = new Factura("1", carrito, trans);
 
         if (factura.procesarPago()) {
             factura.mostrarFactura();
         } else {
             System.out.println("El pago no pudo ser procesado. No se generó la factura.");
-}
+        }
 
 
 

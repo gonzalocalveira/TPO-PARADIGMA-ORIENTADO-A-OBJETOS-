@@ -1,10 +1,13 @@
 package modelo;
 import java.util.*;
 
-public class GestorProductos {
+import modelo.Interface.IGestorProductos;
+import modelo.Interface.IManejoDeArchivos;
+
+public class GestorProductos implements IGestorProductos {
 
     private List<Producto> productos;
-    private ManejoDeArchivos manejoDeArchivos;
+    private IManejoDeArchivos manejoDeArchivos;
     private final String ARCHIVO_PRODUCTOS="productos.txt";
 
     public GestorProductos(){
@@ -13,11 +16,12 @@ public class GestorProductos {
 
     }
 
+    @Override
     public void agregarProducto(Producto p){
         productos.add(p);
     }
 
-
+    @Override
     public boolean actualizarStockProducto(Producto p, int cantidadADescontar){
         int stockProductoActual=p.getStock();
 
@@ -29,9 +33,12 @@ public class GestorProductos {
         }
     }
 
+     @Override
     public List<Producto> getProductos(){
         return productos;
     }
+
+     @Override
     public boolean guardarProducto(){
         for(Producto p: productos){
             if(!manejoDeArchivos.leer(ARCHIVO_PRODUCTOS, p.getNombreProducto())){
@@ -41,7 +48,8 @@ public class GestorProductos {
         }
         return manejoDeArchivos.escribir(ARCHIVO_PRODUCTOS, null, false);
     }
-
+    
+    @Override
     public Producto buscarProductoPorNombre(String nombreProducto){
         for(Producto p: productos){
             if(p.getNombreProducto().equalsIgnoreCase(nombreProducto)){
@@ -50,7 +58,8 @@ public class GestorProductos {
         }
         return null;
     }
-
+    
+    @Override
     public boolean eliminarProducto(Producto p){
         if(productos.contains(p)){
             productos.remove(p);

@@ -1,0 +1,18 @@
+package modelo.Interface;
+
+import java.util.HashMap;
+
+import modelo.Cliente;
+import modelo.Producto;
+
+public interface ICarritoDeCompra {
+      public double getPrecioTotal();
+    public Cliente getCliente();
+    public int validarTipoPago();
+    public void agregarProducto(Producto producto, int cantidad);
+
+    public void eliminarProducto(Producto producto, int cantidad);
+    public HashMap<Producto, Integer> getProductos();
+
+
+}

@@ -5,7 +5,9 @@ package modelo;
 
 import java.io.*;
 import java.util.*;
-public class ManejoDeArchivos{
+
+import modelo.Interface.IManejoDeArchivos;
+public class ManejoDeArchivos implements IManejoDeArchivos{
 
 
    
@@ -14,7 +16,8 @@ public class ManejoDeArchivos{
     public ManejoDeArchivos(){
         
     }
-    
+
+    @Override
     public boolean leer(String nombreArchivo, String datoBuscado){
         String linea;
         try{
@@ -44,7 +47,7 @@ public class ManejoDeArchivos{
     
 
 
-
+    @Override
     public <T> boolean escribir( String nombreArchivo,  T objeto, boolean append){
         try{
 
@@ -60,7 +63,7 @@ public class ManejoDeArchivos{
             return false;
         }
     }
-
+    @Override
     public String buscarFacturaCliente(String nombreArchivo, String correoCliente){
         String linea;
         try{

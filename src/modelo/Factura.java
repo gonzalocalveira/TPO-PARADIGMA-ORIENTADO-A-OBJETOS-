@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.time.LocalDateTime;
-
-public class Factura {
+import modelo.Interface.*;
+public class Factura implements IFactura {
     //atributos
     private String nroFactura;
     private LocalDateTime fecha;
 
     private MediosDePago mediosDePago;
     private double total;
-    private CarritoDeCompra carritoDeCompra;
+    private ICarritoDeCompra carritoDeCompra;
     private boolean pagoProcesado;
 
     //constructor
-    public Factura (String nroFactura, CarritoDeCompra carritoDeCompra, MediosDePago mediosDePago){
+    public Factura (String nroFactura, ICarritoDeCompra carritoDeCompra, MediosDePago mediosDePago){
         this.nroFactura = nroFactura;
         this.carritoDeCompra = carritoDeCompra;
         this.fecha = LocalDateTime.now();
@@ -25,6 +25,7 @@ public class Factura {
         this.pagoProcesado = false;
         this.total = carritoDeCompra.getPrecioTotal();
     }
+
     //getters, setters y metodos
     public String getNroFactura(){
         return nroFactura;
@@ -38,7 +39,7 @@ public class Factura {
         return total=carritoDeCompra.getPrecioTotal();
     }
 
-    public CarritoDeCompra getCarritoDeCompras(){
+    public ICarritoDeCompra getCarritoDeCompras(){
         return carritoDeCompra;
     }
 
