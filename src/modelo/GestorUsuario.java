@@ -44,8 +44,10 @@ public class GestorUsuario implements IGestorUsuario {
 
     @Override
     public boolean iniciarSesion(Usuario usuario) {
-        return buscarUsuarioPorMail(usuario.getCorreoElectronico()) &&
-               buscarUsuarioPorContrasenia(usuario.getContrasenia());
+       return manejoDeArchivos.validarLogin(ARCHIVOS_USUARIOS,
+            usuario.getCorreoElectronico(),
+            usuario.getContrasenia());
+
     }
 
     @Override

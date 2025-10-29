@@ -11,9 +11,8 @@ public class Cliente extends Usuario{
 
 
     public String toString(){
-        return "Nombre: " + getNombre() + " Edad: " + getEdad() + 
-        " Correo Electronico: " + getCorreoElectronico() +
-        " Contrasenia: " + getContrasenia();
+        return getNombre() + ";" + getEdad() + ";" + getCorreoElectronico() + ";" + getContrasenia();
+
     }
 
 

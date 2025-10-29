@@ -9,7 +9,7 @@ import java.util.*;
 import modelo.Interface.IManejoDeArchivos;
 public class ManejoDeArchivos implements IManejoDeArchivos{
 
-    private final String RUTA = "src/modelo/datos/";
+    
    
 
 
@@ -92,4 +92,27 @@ public class ManejoDeArchivos implements IManejoDeArchivos{
             return null;
         }
     }
+
+    @Override
+    public boolean validarLogin(String nombreArchivo, String correo, String contrasenia) {
+    String linea;
+    try {
+        BufferedReader entrada = new BufferedReader(new FileReader(nombreArchivo));
+
+        while ((linea = entrada.readLine()) != null) {
+            // Busca ambos datos en la misma línea
+            if (linea.contains(correo) && linea.contains(contrasenia)) {
+                entrada.close();
+                return true;
+            }
+        }
+
+        entrada.close();
+        return false;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+    }
+
 }
